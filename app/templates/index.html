@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Afet Duygu Analizi & Müdahale Aracı</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h2>🌪️ Afet Duygu Analizi & Müdahale Aracı</h2>
+    <p style="text-align:center;">Afet sonrası yazılmış cümleleri girin. Sistem duygu analizini yaparak öneriler üretecektir.</p>
+
+    <form method="POST">
+        <textarea name="user_input" rows="6" cols="70" placeholder="Her satıra bir cümle yazın...">{{ user_input }}</textarea><br><br>
+        <button type="submit">Analiz Et</button>
+    </form>
+
+    <div id="loadingText">Gemini analiz yapıyor...</div>
+    <div class="loader" id="loader"></div>
+
+    {% if results %}
+        <div class="result-box" id="resultBox">
+            <h3>📋 Sonuçlar</h3>
+            <div class="card-container" id="resultBox">
+                {% for item in results %}
+                    <div class="result-card {{ item.card_class }}">
+                        <p><strong>📝 Girdi:</strong><br> {{ item.input }}</p>
+                        <p><strong>🧠 Gemini Yanıtı:</strong><br><pre>{{ item.output }}</pre></p>
+                    </div>
+                {% endfor %}
+            </div>             
+        </div>
+    {% endif %}
+
+    <script>
+        const form = document.querySelector("form");
+        const loader = document.getElementById("loader");
+        const loadingText = document.getElementById("loadingText");
+        const resultBox = document.getElementById("resultBox");
+
+        form.addEventListener("submit", () => {
+            if (resultBox) resultBox.style.display = "none";
+            loader.style.display = "block";
+            loadingText.style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
