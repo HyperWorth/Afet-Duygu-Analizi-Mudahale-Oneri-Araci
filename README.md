@@ -62,13 +62,6 @@ flask run
 
 5. Tarayıcıda açın: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
----
-
-## 📸 Ekran Görüntüsü
-
-> (İsteğe bağlı: Uygulama görünümünden bir ekran görüntüsü buraya ekleyebilirsin.)
-
----
 
 ## 📁 Proje Yapısı
 
@@ -96,7 +89,7 @@ MIT Lisansı – Detaylar için `LICENSE` dosyasına bakabilirsiniz.
 
 ## 👤 Geliştirici
 
-* Ad: \[Senin adın buraya]
+* Ad: HyperWorth
 * GitHub: [github.com/HyperWorth](https://github.com/HyperWorth)
 
 ---
