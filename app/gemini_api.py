@@ -9,19 +9,20 @@ genai.configure(api_key=api_key)
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 
-def analyze_emotion(text: str):
+def analyze_emotion(text1: str):
     prompt = f"""
-Bir afet sonrası halktan gelen bir cümle aşağıdadır:
+Aşağıdaki cümle, afet sonrası bir vatandaş tarafından yazılmış olabilir:
 
-"{text}"
+"{text1}"
 
-Lütfen bu cümleyi analiz et ve aşağıdaki formatta yanıt ver:
+Bu cümleyi analiz et ve aşağıdaki başlıkları sırayla doldur:
 
-Duygu: (örneğin: korku, panik, öfke, umutsuzluk, umut, güven)
-Skor: (0 ile 100 arasında sayısal bir değer, örn: 78)
-Öneri: (Bu duyguya yönelik yapılması gereken müdahale veya eylem)
+1. Duygu: (örneğin: umut, panik, korku, güven, öfke, rahatlama, üzüntü)
+2. Skor: (0 ile 100 arasında bir değer – 80+ = yüksek duygu yoğunluğu)
+3. Öneri: Bu duygusal duruma uygun olarak ne tür müdahale, destek veya bilgilendirme yapılabilir?
 
-Sadece Türkçe cevap ver. Liste ve açıklama istemiyorum. Formatı bozmadan yaz.
+Olumlu ifadelerde de öneri yazmayı ihmal etme (örneğin: “mevcut destek devam ettirilmeli” gibi).
+Sadece Türkçe ve yukarıdaki formatta yanıt ver. Açıklama ekleme.
 """
 
     try:
